@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEN STUDIO | DenVer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
+    body { background:#f9f9f9; color:#333; scroll-behavior: smooth; }
+    header { background:#1e1e2f; color:#fff; padding:20px 0; text-align:center; position:sticky; top:0; z-index:100; }
+    header h1 { font-size:2.5rem; }
+    nav { margin-top:10px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:700; }
+    nav a:hover { color:#f39c12; transition:0.3s; }
+
+    /* Hero Section */
+    .hero { 
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?fit=crop&w=1500&q=80') no-repeat center center/cover; 
+      height:450px; display:flex; align-items:center; justify-content:center; color:#fff; text-shadow:2px 2px 8px #000; 
+      text-align:center;
+    }
+    .hero h2 { font-size:3rem; font-weight:900; letter-spacing:2px; animation: fadeInDown 1.5s ease forwards; opacity:0; }
+
+    @keyframes fadeInDown {
+      to { opacity:1; transform: translateY(0); }
+      from { opacity:0; transform: translateY(-30px); }
+    }
+
+    .section { padding:50px 20px; max-width:1200px; margin:0 auto; }
+    .section h2 { text-align:center; margin-bottom:40px; color:#1e1e2f; }
+    .about p { text-align:center; font-size:1.1rem; line-height:1.8; max-width:800px; margin:0 auto; }
+
+    /* Skills Section */
+    .skills-list { display:flex; flex-direction:column; gap:20px; max-width:600px; margin:0 auto; }
+    .skill { background:#fff; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); overflow:hidden; }
+    .skill-name { padding:10px 15px; font-weight:700; }
+    .skill-bar { height:20px; background:#f39c12; width:0; transition: width 2s ease-in-out; }
+
+    /* Portfolio Section */
+    .portfolio-carousel { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:20px; padding-bottom:20px; }
+    .portfolio-item { min-width:300px; position:relative; overflow:hidden; border-radius:10px; cursor:pointer; flex-shrink:0; transition: transform 0.5s; }
+    .portfolio-item img { width:100%; display:block; transition:0.5s; border-radius:10px; }
+    .portfolio-item:hover img { transform: scale(1.1); filter: brightness(0.8); }
+    .portfolio-item span { position:absolute; bottom:10px; left:10px; color:#fff; background:rgba(0,0,0,0.6); padding:5px 10px; border-radius:5px; font-size:0.9rem; }
+
+    /* Social Media Icons */
+    .social-icons { text-align:center; margin:20px 0; }
+    .social-icons a { margin:0 10px; color:#1e1e2f; font-size:1.5rem; transition:0.3s; }
+    .social-icons a:hover { color:#f39c12; transform: translateY(-5px); }
+
+    /* Contact Section */
+    .contact form { max-width:600px; margin:0 auto; background:#fff; padding:30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+    .contact input, .contact textarea { width:100%; padding:12px; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+    .contact button { width:100%; padding:15px; background:#f39c12; border:none; color:#fff; font-weight:700; border-radius:5px; cursor:pointer; transition:0.3s; }
+    .contact button:hover { background:#d35400; }
+
+    footer { text-align:center; padding:20px 0; background:#1e1e2f; color:#fff; margin-top:50px; }
+
+    /* Lightbox Styles */
+    .lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000; }
+    .lightbox img, .lightbox video { max-width:90%; max-height:80%; border-radius:10px; }
+    .lightbox:target { display:flex; }
+    .close { position:absolute; top:20px; right:30px; color:#fff; font-size:2rem; text-decoration:none; }
+
+    /* Scroll Animation */
+    .reveal { opacity:0; transform:translateY(50px); transition: all 1s ease; }
+    .reveal.active { opacity:1; transform:translateY(0); }
+
+    /* Video Carousel Scrollbar Hide */
+    .portfolio-carousel::-webkit-scrollbar { display: none; }
+    .portfolio-carousel { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>DEN STUDIO</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero reveal">
+    <h2>DenVer | Professional Video & Photography</h2>
+  </section>
+
+  <!-- Social Media Icons -->
+  <div class="social-icons reveal">
+    <a href="https://www.facebook.com/share/16wnpjymXR/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/with_danieel?igsh=dDFzczBhMGJxdmU5" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@with_danieel?_t=ZS-8zFmXLuzqGV&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.linkedin.com/in/1adnan-dani-35a094373" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <!-- About Section -->
+  <section class="section about reveal" id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Muhammad Adnan, a passionate Video Editor, Photographer, and Videographer. I create stunning videos and photographs for weddings, events, and social media content. My goal is to bring your vision to life with creativity and professionalism.</p>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills reveal" id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-list">
+      <div class="skill"><div class="skill-name">Video Editing</div><div class="skill-bar" data-width="90%"></div></div>
+      <div class="skill"><div class="skill-name">Photography</div><div class="skill-bar" data-width="85%"></div></div>
+      <div class="skill"><div class="skill-name">Videography</div><div class="skill-bar" data-width="80%"></div></div>
+      <div class="skill"><div class="skill-name">Adobe Premiere Pro</div><div class="skill-bar" data-width="90%"></div></div>
+      <div class="skill"><div class="skill-name">Final Cut Pro</div><div class="skill-bar" data-width="85%"></div></div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="section portfolio reveal" id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-carousel">
+      <a href="#lightbox1" class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?fit=crop&w=800&q=80" alt="Wedding Video">
+        <span>Wedding Video</span>
+      </a>
+      <a href="#lightbox2" class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?fit=crop&w=800&q=80" alt="Social Media Video">
+        <span>Social Media Video</span>
+      </a>
+      <a href="#lightbox3" class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?fit=crop&w=800&q=80" alt="Photography">
+        <span>Photography</span>
+      </a>
+      <a href="#lightbox4" class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1511209310767-0e1f4c71e2a1?fit=crop&w=800&q=80" alt="Videography">
+        <span>Videography</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Lightboxes -->
+  <div id="lightbox1" class="lightbox">
+    <a href="#portfolio" class="close">&times;</a>
+    <video controls autoplay>
+      <source src="sample1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div id="lightbox2" class="lightbox">
+    <a href="#portfolio" class="close">&times;</a>
+    <video controls autoplay>
+      <source src="sample2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div id="lightbox3" class="lightbox">
+    <a href="#portfolio" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?fit=crop&w=1200&q=80" alt="Photography">
+  </div>
+  <div id="lightbox4" class="lightbox">
+    <a href="#portfolio" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1511209310767-0e1f4c71e2a1?fit=crop&w=1200&q=80" alt="Videography">
+  </div>
+
+  <!-- Contact Section -->
+  <section class="section contact reveal" id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" value="dfordaniiiii@gmail.com" required>
+      <input type="tel" placeholder="Phone Number" value="+92-301-3066281" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p style="text-align:center; margin-top:15px;">Email: dfordaniiiii@gmail.com | Phone/WhatsApp: +92-301-3066281 | Lahore, Pakistan</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 DEN STUDIO | Muhammad Adnan. All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Contact form basic validation
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thank you! Your message has been sent.');
+      form.reset();
+    });
+
+    // Animated skill bars and scroll reveal
+    const skillBars = document.querySelectorAll('.skill-bar');
+    window.addEventListener('scroll', () => {
+      skillBars.forEach(bar => {
+        const rect = bar.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50) {
+          bar.style.width = bar.getAttribute('data-width');
+        }
+      });
+
+      // Scroll reveal
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
